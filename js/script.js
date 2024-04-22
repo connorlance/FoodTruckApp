@@ -1,13 +1,16 @@
-  function goToPage(url) {
-    window.location.href = url;
+//go to page for buttons
+function goToPage(url) {
+  window.location.href = url;
 }
 
+//+ button
 function increment(itemId) {
   var input = document.getElementById('qty' + itemId);
   var value = parseInt(input.value, 10);
   input.value = isNaN(value) ? 1 : value + 1;
 }
 
+//- button
 function decrement(itemId) {
   var input = document.getElementById('qty' + itemId);
   var value = parseInt(input.value, 10);

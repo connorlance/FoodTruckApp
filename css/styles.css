@@ -17,9 +17,10 @@
 
     text-align: center;
     text-decoration: none;
-    
+
 }
-.ButtonClassWhite:hover{
+
+.ButtonClassWhite:hover {
     background-color: #72bef5;
     color: #ffffff;
 }
@@ -62,16 +63,44 @@
     margin: 0;
     outline: none;
     padding: 8px .8em;
-    
+
     text-align: center;
     text-decoration: none;
-   
-    
+
+
     vertical-align: baseline;
     white-space: nowrap;
 }
-.ButtonClassBlue2:hover{
+
+.ButtonClassBlue2:hover {
     background-color: #72bef5;
+    color: #ffffff;
+}
+
+.ButtonClassGreen {
+    background-color: #1abe4b;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.15385;
+
+    outline: none;
+    padding: 8px .8em;
+
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.ButtonClassGreen:hover {
+    background-color: #437945;
     color: #ffffff;
 }
 
@@ -85,24 +114,27 @@
 
     }
 
-/* Hide increment and decrement buttons for input type number */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0; /* Optional: Remove default margin */
-}
 
-.ButtonClassWhite input[type="radio"] {
-    /*display: none;*/
-}
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
-.ButtonClassWhite input[type="radio"]:checked + label {
-    background-color: #204bc4 !important;
-    color: #fff !important;
-}
-.locationButtons {
-    margin-bottom: 1.5em; /* Optional: Add some space between each radio button */
-}
+    .ButtonClassWhite input[type="radio"] {}
 
+    .ButtonClassWhite input[type="radio"]:checked+label {
+        background-color: #204bc4 !important;
+        color: #fff !important;
+    }
 
+    .locationButtons {
+        margin-bottom: 1.5em;
+    }
+
+    .orderButton {
+        width: 200px;
+        text-align: right;
+        margin-bottom: 5px;
+    }
 }

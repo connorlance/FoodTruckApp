@@ -12,8 +12,11 @@
 <body>
 
     <?php
+    //get session variable
    session_start();
    $oid = $_SESSION['oid'];
+
+   //go to file for generating order item forms
     include_once "php/orderItems.php";
     ?>
 
@@ -21,11 +24,15 @@
         Order Summary
     </div>
 
+    <!--Generate order summary-->
     <?php
     include_once "php/orderSummary.php";
     ?>
+
     <br>
-<button class="ButtonClassWhite" onclick="goToPage('submittedOrderSummary.php')">Submit Order</button>
+    
+    <!--Go to page showing only order summary without order item forms-->
+    <button class="ButtonClassWhite" onclick="goToPage('submittedOrderSummary.php')">Submit Order</button>
 
 </body>
 </html>

@@ -6,31 +6,29 @@ $username = "hci";
 $password = "hci";
 $dbname = "hci";
 $conn = new mysqli($servername, $username, $password, $dbname);
-session_start();
 
-//query orders table for orders with open status ordered by lid ascending
-$select = "SELECT * FROM orders WHERE status='open' ORDER BY lid ASC";
+//query orders table for orders with ready status ascending by lid
+$select = "SELECT * FROM orders WHERE status='ready' ORDER BY lid ASC";
 $result = $conn->query($select);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         //create variables
-        $oid = $row['oid'];
-        $lid = $row['lid'];
+        $oid = $row['oid']; 
+        $lid = $row['lid']; 
 
-        //form for order buttons
-        echo "<form method='post' action='php/expandedOrderOpen.php'>";
+        ////form for order buttons
+        echo "<form method='post' action='php/expandedOrderReady.php'>";
 
         //hidden variables
         echo "<input type='hidden' name='oid' value='$oid'>";
         echo "<input type='hidden' name='lid' value='$lid'>";
 
         //button styling
-        echo "<div class='order-container' style='margin-top: 6px;'>";
-        echo "<button type='submit' class='ButtonClassWhite order-button' style='width: 420px; font-size: 15px; text-align: right;'>";
+        echo "<div class='order-container' style='margin-top: 6px;'>"; 
+        echo "<button type='submit' class='ButtonClassWhite order-button' style='width: 420px; font-size: 15px; text-align: right;'>"; // Start order button with styles
         echo "<span style='float: left; display: inline-block;'>#" . $lid . " | </span>";
         echo "<div style='display: inline-block;'>";
-
 
         //query order_items table using oid
         $select2 = "SELECT * FROM order_items WHERE oid='$oid'";
@@ -41,7 +39,7 @@ if ($result->num_rows > 0) {
             $items = array();
 
             while ($row2 = $result2->fetch_assoc()) {
-                //get variables
+                //create variables
                 $qty = $row2['qty'];
                 $iid = $row2['iid'];
 
@@ -71,19 +69,20 @@ if ($result->num_rows > 0) {
         } else {
             echo "error";
         }
-        echo "</div>";
-        echo "</button>";
-        echo "</form>";
+        echo "</div>"; 
 
         //form for X button
-        echo "<form method='post' action='php/orderReady.php' style='display: inline-block;'>";
-        echo "<input type='hidden' name='oid' value='$oid'>";
-        echo "<button type='submit' class='ButtonClassWhite x-button' style='margin-left: 4px;'>";
-        echo "<span style='font-size: 20px;'>&times;</span>";
-        echo "</button>";
         echo "</form>";
-        echo "</div>";
+        echo "<form method='post' action='php/orderCompleted.php' style='display: inline-block;'>";
+        echo "<input type='hidden' name='oid' value='$oid'>";
+        echo "<button type='submit' class='ButtonClassWhite x-button' style='margin-left: 4px;'>"; 
+        echo "<span style='font-size: 20px;'>&times;</span>";
+        echo "</button>"; 
+        echo "</form>"; 
+        echo "</div>"; 
+        echo "</form>";
     }
 } else {
     echo "0 results";
 }
+?>
