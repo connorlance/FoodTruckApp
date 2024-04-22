@@ -3,8 +3,8 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script.js"></script>
+<link rel="stylesheet" href="../css/styles.css">
+<script src="../js/script.js"></script>
     <title>Food Truck</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,9 @@
 </head>
 
 <body>
-    <div class="tabButtons">
+    
+    <header>
+
         <div>
             <button class="ButtonClassWhite " onclick="goToPage('open.php')">Open</button>
         </div>
@@ -28,9 +30,7 @@
             <button class="ButtonClassWhite " onclick="goToPage('inventory.php')">Inventory</button>
 
         </div>
-    </div>
-    <header>
-
+    
     </header>
 
     <main>

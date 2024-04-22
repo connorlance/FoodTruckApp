@@ -6,22 +6,22 @@
     box-sizing: border-box;
     color: #000000;
     cursor: pointer;
-    display: inline-block;
+
     font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
     font-size: 1em;
     font-weight: 400;
     line-height: 1.15385;
-    margin: 0;
+
     outline: none;
     padding: 8px .8em;
-    position: relative;
+
     text-align: center;
     text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    white-space: nowrap;
+    
+}
+.ButtonClassWhite:hover{
+    background-color: #72bef5;
+    color: #ffffff;
 }
 
 .ButtonClassBlue {
@@ -32,23 +32,20 @@
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    display: inline-block;
+
     font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
     font-size: 1em;
     font-weight: 400;
     line-height: 1.15385;
-    margin: 0;
+
     outline: none;
     padding: 8px .8em;
-    position: relative;
+
     text-align: center;
     text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    white-space: nowrap;
+
 }
+
 .ButtonClassBlue2 {
     background-color: #204bc4;
     border: 1px solid transparent;
@@ -57,7 +54,7 @@
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    display: inline-block;
+
     font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
     font-size: 1em;
     font-weight: 400;
@@ -65,38 +62,47 @@
     margin: 0;
     outline: none;
     padding: 8px .8em;
-    position: relative;
+    
     text-align: center;
     text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+   
+    
     vertical-align: baseline;
     white-space: nowrap;
+}
+.ButtonClassBlue2:hover{
+    background-color: #72bef5;
+    color: #ffffff;
 }
 
 @media only screen and (max-width: 767px) {
 
-    body {
+    header {
         margin: auto;
-
-    }
-
-    .tabButtons {
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
 
     }
-   
-    #inventoryButton {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 50px;
-    }
+
+/* Hide increment and decrement buttons for input type number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Optional: Remove default margin */
+}
+
+.ButtonClassWhite input[type="radio"] {
+    /*display: none;*/
+}
+
+.ButtonClassWhite input[type="radio"]:checked + label {
+    background-color: #204bc4 !important;
+    color: #fff !important;
+}
+.locationButtons {
+    margin-bottom: 1.5em; /* Optional: Add some space between each radio button */
+}
 
 
-
-
-  
 }

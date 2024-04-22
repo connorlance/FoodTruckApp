@@ -24,8 +24,8 @@ if ($result->num_rows > 0) {
       $restockingDisplayed = true;
     }
     
-    echo "Description: <input type='text' name='description' value= '" . $row["description"] . "' readonly><br/>\n";
-    echo "Quantity: <input type='text' name='quantity' value= '" . $quantity . "' style='color: " . $color . ";'><br/>\n";
+    echo "Item: <input type='text' name='item' value= '" . $row["description"] . "'readonly>";
+    echo "Qty: <input type='text' name='quantity' value= '" . $quantity . "' style='color: " . $color . ";'><br/>\n";
     echo "<input type='hidden' name='ID' value= '" . $row["iid"] . "'>";
     echo '<input type="submit" name="submit_forms" value="Update" class="ButtonClassBlue2">';
     echo "</form>\n";

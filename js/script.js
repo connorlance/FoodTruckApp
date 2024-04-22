@@ -1,17 +1,15 @@
-function openTab(evt, tabName) {
-    var i, x, tablinks;
-    var x = document.getElementsByClassName("tab");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace("ButtonClassBlue");
-  }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " ButtonClassBlue";
-  }
-
   function goToPage(url) {
     window.location.href = url;
+}
+
+function increment(itemId) {
+  var input = document.getElementById('qty' + itemId);
+  var value = parseInt(input.value, 10);
+  input.value = isNaN(value) ? 1 : value + 1;
+}
+
+function decrement(itemId) {
+  var input = document.getElementById('qty' + itemId);
+  var value = parseInt(input.value, 10);
+  input.value = isNaN(value) ? 0 : Math.max(0, value - 1);
 }
