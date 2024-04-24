@@ -1,11 +1,27 @@
 <?php
 //connect to database
-$servername = "localhost";
-$username = "hci";
-$password = "hci";
-$dbname = "hci";
-$conn = new mysqli($servername, $username, $password, $dbname);
+require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
 
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
+// Check if the form is submitted for updating inventory
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_forms'])) {
+
+  //create variables
+  $description = $_POST['item'];
+  $quantity = $_POST['quantity'];
+  $ID = $_POST['ID'];
+
+  // Update item table with qty and description using iid
+  $query = "UPDATE item SET qty='$quantity', description='$description' WHERE iid='$ID'";
+  $result = $conn->query($query);
+
+  // Redirect back to inventory page
+  header("Location: http://localhost/FoodTruckApp/SellerInterface/inventory.php");
+  exit;
+}
 //query item table order by qty
 $select = "SELECT * FROM item ORDER BY qty";
 $result = $conn->query($select);
@@ -16,7 +32,7 @@ $restockingDisplayed = false;
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
     //create form for updating inventory
-    echo '<form method="post" action="php/updateInventoryDB.php">';
+    echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
 
     //create variables
     $itemId = $row["iid"];
@@ -54,4 +70,6 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
+
+$conn->close();
 ?>

@@ -1,10 +1,6 @@
 <?php
 //connect to database
-$servername = "localhost";
-$username = "hci";
-$password = "hci";
-$dbname = "hci";
-$conn = new mysqli($servername, $username, $password, $dbname);
+require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
 
 //initilize session variable
 session_start(); 

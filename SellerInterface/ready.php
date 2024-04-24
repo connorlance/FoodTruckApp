@@ -27,9 +27,13 @@
     </header>
     <main>
 
-    <!--Generate ready orders-->
+    <!--Generate open orders-->
     <?php
-    include_once "php/readyOrders.php";
+    session_start();
+    $_SESSION['orderType'] = 'ready';
+    $_SESSION['page'] = 'ready';
+
+    include_once "php/selectOrders.php";
     ?>
     
     </main>

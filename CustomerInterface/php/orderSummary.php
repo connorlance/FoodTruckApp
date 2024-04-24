@@ -1,10 +1,6 @@
 <?php
 //connect to database
-$servername = "localhost";
-$username = "hci";
-$password = "hci";
-$dbname = "hci";
-$conn = new mysqli($servername, $username, $password, $dbname);
+require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
 
 //initilize variables 
 $oid = $_SESSION['oid'];
@@ -18,7 +14,6 @@ echo "Order #: $oid<br>";
 echo "Location: $name<br>";
 echo "Arrival: $arrival<br>";
 echo "Customer Name: $cname<br>";
-
 
 //query order_items table using oid
 $select = "SELECT * FROM order_items WHERE oid='$oid'";

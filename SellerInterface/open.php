@@ -30,7 +30,11 @@
 
     <!--Generate open orders-->
     <?php
-    include_once "php/openOrders.php";
+    session_start();
+    $_SESSION['orderType'] = 'open';
+    $_SESSION['page'] = 'open';
+
+    include_once "php/selectOrders.php";
     ?>
 
     </main>
