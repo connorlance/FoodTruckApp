@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
 }
 
 //query item table for items with qty less than 5
-$select = "SELECT * FROM item WHERE qty < 5";
+$select = "SELECT * FROM item WHERE qty <= 5";
 $result = $conn->query($select);
 
 if ($result->num_rows > 0) {
@@ -76,4 +76,4 @@ if ($result->num_rows > 0) {
   echo "0 results";
 }
 ?>
-?>
+

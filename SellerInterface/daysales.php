@@ -14,49 +14,71 @@
 <body>
     <!--Navigation buttons-->
     <header>
-        <div>
-            <button class="ButtonClassWhite " onclick="goToPage('open.php')">Open</button>
-        </div>
-        <div>
-            <button class="ButtonClassWhite " onclick="goToPage('ready.php')">Ready</button>
-        </div>
-        <div>
-            <button class="ButtonClassBlue " onclick="goToPage('daysales.php')">Daysales</button>
-        </div>
-        <div id="inventoryButton">
-            <button class="ButtonClassWhite " onclick="goToPage('inventory.php')">Inventory</button>
+        <div class="nav_container">
+            <div id="nav1">
+                <button class="NavButtonWhite " onclick="goToPage('open.php')">Open</button>
+            </div>
+            <div id="nav2">
+                <button class="NavButtonWhite " onclick="goToPage('ready.php')">Ready</button>
+            </div>
+            <div id="nav3">
+                <button class="NavButtonBlue " onclick="goToPage('daysales.php')">Daysales</button>
+            </div>
+            <div id="nav4">
+                <button class="NavButtonWhite " onclick="goToPage('inventory.php')">Inventory</button>
+            </div>
         </div>
     </header>
     <main>
 
-        <?php
-        session_start();
-        $_SESSION['page'] = 'daySales';
+        <div id="contentBelowNav">
+            <?php
+            session_start();
+            $_SESSION['page'] = 'daySales';
 
 
-        //Generate ready and completed orders
-        include_once "php/selectOrders.php";
+            //Generate ready and completed orders
+            include_once "php/selectOrders.php";
 
-        //query orders table
-        $select3 = "SELECT * FROM orders";
-        $result3 = $conn->query($select3);
 
-        //create variable for sum of all orders totalCost
-        $sumTotalCost = 0;
+            ?>
+            <footer>
+                <?php
+                //query orders table
+                $select3 = "SELECT * FROM orders WHERE status = 'ready' OR status = 'completed'";
+                $result3 = $conn->query($select3);
 
-        if ($result3->num_rows > 0) {
-            while ($row3 = $result3->fetch_assoc()) {
-                //compute sum of all totalCost
-                $sumTotalCost = $sumTotalCost + $row3['totalCost'];
-            }
-            echo "<br>";
+                //create variable for sum of all orders totalCost
+                $sumTotalCost = 0;
 
-            //output total sales of all order
-            echo "Total sales: $" . $sumTotalCost;
-        } else {
-            echo "0 results";
-        }
-        ?>
+                if ($result3->num_rows > 0) {
+                    while ($row3 = $result3->fetch_assoc()) {
+                        //compute sum of all totalCost
+                        $sumTotalCost = $sumTotalCost + $row3['totalCost'];
+                        $numOrders = $result3->num_rows;
+
+                    }
+                    echo "<br>";
+
+                    echo "<div id=TotalOrdersSales_container>";
+                    //output # of ready and completed orders
+                    echo "<div id='NumOrders'>";
+                    echo "Total Orders: " . $numOrders;
+                    echo "</div>";
+                    //output total sales of ready and completed orders
+                    echo "<div id='SumTotalSales'>";
+                    echo "Total sales: $" . $sumTotalCost;
+                    echo "</div>";
+                    echo "</div";
+
+
+                } else {
+                    echo "0 results";
+                }
+                ?>
+            </footer>
+        </div>
+
 
     </main>
 </body>

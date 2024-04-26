@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/script.js"></script>
@@ -9,34 +10,38 @@
     <meta name="author" content="Connor Lance">
     <meta name="description" content="This is the open page for the seller interface.">
 </head>
+
 <body>
-     <!--Navigation buttons-->
+    <!--Navigation buttons-->
     <header>
-        <div>
-            <button class="ButtonClassBlue " onclick="goToPage('open.php')">Open</button>
-        </div>
-        <div>
-            <button class="ButtonClassWhite " onclick="goToPage('ready.php')">Ready</button>
-        </div>
-        <div>
-            <button class="ButtonClassWhite " onclick="goToPage('daysales.php')">Daysales</button>
-        </div>
-        <div>
-            <button class="ButtonClassWhite " onclick="goToPage('inventory.php')">Inventory</button>
+        <div class="nav_container">
+            <div id="nav1">
+                <button class="NavButtonBlue " onclick="goToPage('open.php')">Open</button>
+            </div>
+            <div id="nav2">
+                <button class="NavButtonWhite " onclick="goToPage('ready.php')">Ready</button>
+            </div>
+            <div id="nav3">
+                <button class="NavButtonWhite " onclick="goToPage('daysales.php')">Daysales</button>
+            </div>
+            <div id="nav4">
+                <button class="NavButtonWhite " onclick="goToPage('inventory.php')">Inventory</button>
+            </div>
         </div>
     </header>
 
     <main>
+        <div id="contentBelowNav">
+            <!--Generate open orders-->
+            <?php
+            session_start();
+            $_SESSION['orderType'] = 'open';
+            $_SESSION['page'] = 'open';
 
-    <!--Generate open orders-->
-    <?php
-    session_start();
-    $_SESSION['orderType'] = 'open';
-    $_SESSION['page'] = 'open';
-
-    include_once "php/selectOrders.php";
-    ?>
-
+            include_once "php/selectOrders.php";
+            ?>
+        </div>
     </main>
 </body>
+
 </html>
