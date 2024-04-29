@@ -32,6 +32,8 @@
     <main>
 
         <div id="contentBelowNav">
+        
+
             <?php
             session_start();
             $_SESSION['page'] = 'daySales';
@@ -78,7 +80,7 @@
                 ?>
             </footer>
         </div>
-
+<div id="navMargin"></div>
 
     </main>
 </body>

@@ -41,6 +41,7 @@
             include_once "php/selectOrders.php";
             ?>
         </div>
+        <div id="navMargin"></div>
     </main>
 </body>
 

@@ -1,290 +1,392 @@
 body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    margin-top: .4em;
-    padding-bottom: 24px;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-top: 0.4em;
+  padding-bottom: 24px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background-color: #dddddd;
 }
 
 html {
-    overflow: scroll;
-    overflow-x: hidden;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
+  width: 0;
+  background: transparent;
 }
 
 /* Navigation Buttons */
+
 .nav_container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
 }
 
 #nav1 {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 #nav2 {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 #nav3 {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 #nav4 {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .NavButtonBlue {
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    min-height: 2.5em;
-    font-size: 1em;
-    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
-    outline: 0;
-    padding: 0px 16px;
-    background-color: #0095ff;
-    color: #fff;
-    font-weight: 400;
-    box-sizing: border-box;
-    border: 1px solid rgb(0, 120, 212);
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  min-height: 2.5em;
+  font-size: 1em;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  outline: 0;
+  padding: 0px 16px;
+  background-color: #0095ff;
+  color: #fff;
+  font-weight: 400;
+  box-sizing: border-box;
+  border: 1px solid rgb(0, 120, 212);
 }
 
 .NavButtonWhite {
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    min-height: 2.5em;
-    font-size: 1em;
-    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
-    outline: 0;
-    cursor: pointer;
-    padding: 0px 16px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(50, 49, 48);
-    font-weight: 400;
-    box-sizing: border-box;
-    border: 1px solid #0095ff;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  min-height: 2.5em;
+  font-size: 1em;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  outline: 0;
+  cursor: pointer;
+  padding: 0px 16px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(50, 49, 48);
+  font-weight: 400;
+  box-sizing: border-box;
+  border: 1px solid #0095ff;
 }
 
 .NavButtonWhite:hover {
-    background-color: rgb(218, 215, 213);
-    color: rgb(32, 31, 30);
+  background-color: rgb(218, 215, 213);
+  color: rgb(32, 31, 30);
+}
+#navMargin {
+  position: fixed;
+  top: 2.5em;
+  width: 100%;
+  height: 0.4em;
+  background-color: #dddddd;
 }
 
 #contentBelowNav {
-    margin-top: 2.5em;
+  margin-top: 2.5em;
 }
 
 /* Open Page */
+
 .OpenPageOrder_container {
-    display: flex;
-    gap: 4px;
-    width: 100%;
+  display: flex;
+  gap: 4px;
+  width: 100%;
 }
 
 .OpenButtonBlue {
-    width: 100%;
-    min-width: 21.1em;
-    margin-top: 0.0625em;
-    margin-bottom: 0.0625em;
-    font-size: 1em;
-    text-align: right;
-    padding: .5em .0;
-    background-color: #6cbbf3;
-    border: 1px solid #000000;
-    border-radius: 3px;
-    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
-    box-sizing: border-box;
-    color: #000000;
-    cursor: pointer;
-    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
-    font-weight: 400;
-    line-height: 1.15385;
-    outline: none;
-    text-decoration: none;
+  width: 100%;
+  min-width: 21.1em;
+  margin-top: 0.0625em;
+  margin-bottom: 0.0625em;
+  font-size: 1em;
+  text-align: right;
+  padding: 0.5em 0;
+  background-color: #6cbbf3;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  text-decoration: none;
 }
 
 .OpenButtonBlue:hover {
-    background-color: #9dd3fa;
-    color: #000000;
+  background-color: #9dd3fa;
+  color: #000000;
 }
 
-
-
 /* Ready Page */
+
 .ReadyPageOrder_container {
-    display: flex;
-    gap: 4px;
-    width: 100%;
+  display: flex;
+  gap: 4px;
+  width: 100%;
 }
 
 .ReadyButtonGreen {
-    width: 100%;
-    min-width: 21.1em;
-    margin-top: 0.0625em;
-    margin-bottom: 0.0625em;
-    font-size: 1em;
-    text-align: right;
-    padding: .5em .0;
-    background-color: #1abe4b;
-    border: 1px solid #ffffff;
-    border-radius: 3px;
-    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
-    box-sizing: border-box;
-    color: #000000;
-    cursor: pointer;
-    border: 1px solid rgb(0, 0, 0);
-    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
-    font-weight: 400;
-    line-height: 1.15385;
-    outline: none;
-    text-decoration: none;
+  width: 100%;
+  min-width: 21.1em;
+  margin-top: 0.0625em;
+  margin-bottom: 0.0625em;
+  font-size: 1em;
+  text-align: right;
+  padding: 0.5em 0;
+  background-color: #1abe4b;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  border: 1px solid rgb(0, 0, 0);
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  text-decoration: none;
 }
 
 .ReadyButtonGreen:hover {
-    background-color: #69df6d;
+  background-color: #69df6d;
 }
 
 /* Div for buttons within container (does not effect Daysales page as the buttons are the only item) */
-.button_div{
+.button_div {
   flex-grow: 1;
 }
 
 /* X Button */
+
 .XButtonRed {
-    min-width: 2em;
-    max-height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0.0625em;
-    margin-bottom: 0.0625em;
-    font-size: 1em;
-    padding: .5em .0;
-    background-color: #e23939;
-    border: 1px solid #000000;
-    border-radius: 3px;
-    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
-    box-sizing: border-box;
-    color: #000000;
-    cursor: pointer;
-    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
-    font-weight: 400;
-    line-height: 1;
-    outline: none;
-    text-decoration: none;
+  min-width: 2em;
+  max-height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.0625em;
+  margin-bottom: 0.0625em;
+  font-size: 1em;
+  padding: 0.5em 0;
+  background-color: #e23939;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  outline: none;
+  text-decoration: none;
 }
 
 .XButtonRed:hover {
-    background-color: #fa7070;
-    color: #000000;
+  background-color: #fa7070;
+  color: #000000;
 }
 
 /* Daysales Page */
+
 .DaySalesReadyOrder_container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .DaySalesReadyButtonGreen {
-    width: 100%;
-    margin-top: 0.0625em;
-    margin-bottom: 0.0625em;
-    font-size: 1em;
-    text-align: right;
-    padding: .5em .0;
-    background-color: #1abe4b;
-    border: 1px solid #ffffff;
-    border-radius: 3px;
-    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
-    box-sizing: border-box;
-    color: #000000;
-    cursor: pointer;
-    border: 1px solid rgb(0, 0, 0);
-    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
-    font-weight: 400;
-    line-height: 1.15385;
-    outline: none;
-    text-decoration: none;
+  width: 100%;
+  margin-top: 0.0625em;
+  margin-bottom: 0.0625em;
+  font-size: 1em;
+  text-align: right;
+  padding: 0.5em 0;
+  background-color: #1abe4b;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  border: 1px solid rgb(0, 0, 0);
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  text-decoration: none;
 }
 
 .DaySalesReadyButtonGreen:hover {
-    background-color: #69df6d;
+  background-color: #69df6d;
 }
 
 #CompletedOrdersTitle {
-    text-align: center;
+  text-align: center;
 }
 
 .DaySalesCompletedOrderContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .CompletedButtonWhite {
-    width: 100%;
-    margin-top: 0.0625em;
-    margin-bottom: 0.0625em;
-    font-size: 1em;
-    text-align: right;
-    padding: .5em .0;
-    background-color: #b9b6b6;
-    border: 1px solid #ffffff;
-    border-radius: 3px;
-    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
-    box-sizing: border-box;
-    color: #000000;
-    cursor: pointer;
-    border: 1px solid rgb(0, 0, 0);
-    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
-    font-weight: 400;
-    line-height: 1.15385;
-    outline: none;
-    text-decoration: none;
+  width: 100%;
+  margin-top: 0.0625em;
+  margin-bottom: 0.0625em;
+  font-size: 1em;
+  text-align: right;
+  padding: 0.5em 0;
+  background-color: #b9b6b6;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  border: 1px solid rgb(0, 0, 0);
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  text-decoration: none;
 }
 
 .CompletedButtonWhite:hover {
-    background-color: rgb(218, 215, 213);
+  background-color: rgb(218, 215, 213);
 }
 
 #TotalOrdersSales_container {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #dddddd;
-    padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #dddddd;
+  padding: 20px;
 }
 
 #NumOrders {
-    position: fixed;
-    left: 2em;
-    bottom: 10px;
-    text-align: center;
+  position: fixed;
+  left: 2em;
+  bottom: 10px;
+  text-align: center;
 }
 
 #SumTotalSales {
-    position: fixed;
-    right: 2em;
-    bottom: 10px;
-    text-align: center;
+  position: fixed;
+  right: 2em;
+  bottom: 10px;
+  text-align: center;
 }
 
 /* Inventory Page*/
 
+#UpdateInventory_container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
 
+#NewItemName {
+  flex-grow: 4;
+  margin-right: 5px;
+  box-sizing: border-box;
+}
 
+#NewItemName input {
+  width: 100%;
+  height: 2.4em;
+  padding: 0.5em;
+  box-sizing: border-box;
+}
 
+#UpdateInventoryQuanity {
+  flex-grow: 1;
+  margin-right: 5px;
+  box-sizing: border-box;
+  width: 8%;
+}
+
+#UpdateInventoryQuanity input {
+  width: 100%;
+  height: 2.4em;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#UpdateInventoryCost {
+  flex-grow: 1;
+  margin-right: 5px;
+  box-sizing: border-box;
+  width: 8%;
+}
+
+#UpdateInventoryCost input {
+  width: 100%;
+  height: 2.4em;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#UpdateInventorySubmitButton {
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+#UpdateInventorySubmitButton input[type="submit"] {
+  width: 100%;
+  height: 2em;
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+
+.SubmitButton {
+  height: 2em;
+  width: 100%;
+  font-size: 1em;
+  text-align: center;
+  padding: 0.5em 0;
+  background-color: #6cbbf3;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  text-decoration: none;
+}
+
+.SubmitButton:hover {
+  background-color: #9dd3fa;
+  color: #000000;
+}
 /* iPhone 11 Pro IOS 14.6*/
-@media only screen and (max-width: 375px) {}
+@media only screen and (max-width: 375px) {
+}

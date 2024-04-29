@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
     //create variables
     $iid = $row['iid'];
-    $qty = $row['qty']; 
+    $qty = $row['qty'];
 
     //query item for description using iid
     $selectDescription = "SELECT description, cost FROM item WHERE iid='$iid'";
@@ -34,17 +34,17 @@ if ($result->num_rows > 0) {
         //create variables
         $description = $rowDescription['description'];
         $cost = $rowDescription['cost'];
-        
+
         //sum the cost of each item
         for ($i = 0; $i < $qty; $i++) {
           echo "Item: $description  |  Cost: $cost<br>";
-          $totalCost += $cost; 
+          $totalCost += $cost;
         }
       }
-    } 
+    }
   }
   //output totalCost
-  echo "Total: $$totalCost"; 
+  echo "Total: $$totalCost";
 
   //add totalCost to orders table
   $query = "UPDATE orders SET totalCost='$totalCost' WHERE oid='$oid'";

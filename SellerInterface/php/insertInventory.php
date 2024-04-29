@@ -12,4 +12,3 @@ $query = "INSERT into item (description, qty, cost) values('$description', '$qua
 $result = $conn->query($query);
 header("Location: ../inventory.php");
 exit;
-?>

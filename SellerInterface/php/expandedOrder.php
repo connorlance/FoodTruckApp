@@ -28,13 +28,12 @@ if ($result->num_rows > 0) {
     echo "(" . $row['cname'] . ")";
 
     //form for X button
-    if($page == 'open' || $page == 'ready'){
+    if ($page == 'open' || $page == 'ready') {
         echo "<form method='post' action='orderStatus.php' style='display: inline-block;'>";
-    }else if($page == 'daySales'){
+    } else if ($page == 'daySales') {
         echo "<form method='post' action='../daysales.php' style='display: inline-block;'>";
-
     }
-    
+
     echo "<input type='hidden' name='oid' value='$oid'>";
     echo "<button type='submit' class='ButtonClassWhite x-button' style='margin-left: 4px;'>";
     echo "<span style='font-size: 20px;'>&times;</span>";

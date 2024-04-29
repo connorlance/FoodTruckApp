@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
       echo "<p style='color: red;'>Restocking</p>";
       $restockingDisplayed = true;
     }
-    
+
     //create description, qty text boxes
     echo "Item: <input type='text' name='item' value= '" . $row["description"] . "'readonly style='width: 100px;'>";
     echo "Qty: <input type='text' id='qty" . $itemId . "' name='quantity' value= '" . $quantity . "' style='color: " . $color . "; width: 20px;'>";
@@ -72,4 +72,3 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-?>

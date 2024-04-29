@@ -49,9 +49,6 @@ if ($result->num_rows > 0) {
         echo "<input type='hidden' name='oid' value='$oid'>";
         echo "<input type='hidden' name='lid' value='$lid'>";
 
-
-        
-
         // Button for order status
         echo "<button type='submit' class='$button_class'>";
         echo "<span style='float: left; display: inline-block;'>&nbsp;#$lid | </span>";
@@ -75,7 +72,7 @@ if ($result->num_rows > 0) {
 
                 if ($result3->num_rows > 0) {
                     while ($row3 = $result3->fetch_assoc()) {
-                        // Create qty + description 
+                        // Create qty + description
                         $item = $qty . " " . $row3['description'];
                         // Add $item to array
                         $items[] = $item;
@@ -97,21 +94,19 @@ if ($result->num_rows > 0) {
 
         // Close inner div for buttons (added)
         echo "</div>";
-
         echo "</form>";
 
         // Form for X button
-        if($page == 'open' || $page == 'ready'){
-        echo "<form method='post' action='php/orderStatus.php'>";
-        echo "<input type='hidden' name='oid' value='$oid'>";
-        echo "<button type='submit' class='XButtonRed'>";
-        echo "<span style='font-size: 30px;'>&times;</span>";
-        echo "</button>";
-        echo "</form>";
+        if ($page == 'open' || $page == 'ready') {
+            echo "<form method='post' action='php/orderStatus.php'>";
+            echo "<input type='hidden' name='oid' value='$oid'>";
+            echo "<button type='submit' class='XButtonRed'>";
+            echo "<span style='font-size: 30px;'>&times;</span>";
+            echo "</button>";
+            echo "</form>";
         }
         echo "</div>"; // Close container div
     }
 } else {
     echo "0 results";
 }
-?>
