@@ -36,11 +36,39 @@
                 </div>
             </form>
 
+            <form action="php/removeInventory.php" method="POST">
+                <div id='removeInventory_container'>
+                    <div id="RemoveItemName">
+                        <select name="item_description">
+                            <option value="">Select Item</option>
+                            <?php
+                            // Connect to database
+                            require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+
+                            // Perform SQL query to fetch items
+                            $sql = "SELECT description FROM item";
+                            $result = $conn->query($sql);
+
+                            // Check if there are rows returned
+                            if ($result->num_rows > 0) {
+                                // Output data of each row
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<option value='" . $row['description'] . "'>" . $row['description'] . "</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id="RemoveInventorySubmitButton"><input type="submit" class="SubmitButton" value="Remove">
+                    </div>
+                </div>
+            </form>
+
             <!--Generate update inventory forms-->
             <?php
             include_once "php/updateInventory.php";
             ?>
-
         </div>
         <div id="navMargin"></div>
     </main>

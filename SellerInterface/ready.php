@@ -15,18 +15,10 @@
     <!--Navigation buttons-->
     <header>
         <div class="nav_container">
-            <div id="nav1">
-                <button class="NavButtonWhite " onclick="goToPage('open.php')">Open</button>
-            </div>
-            <div id="nav2">
-                <button class="NavButtonBlue " onclick="goToPage('ready.php')">Ready</button>
-            </div>
-            <div id="nav3">
-                <button class="NavButtonWhite " onclick="goToPage('daysales.php')">Daysales</button>
-            </div>
-            <div id="nav4">
-                <button class="NavButtonWhite " onclick="goToPage('inventory.php')">Inventory</button>
-            </div>
+            <div id="nav1"><button class="NavButtonWhite " onclick="goToPage('open.php')">Open</button></div>
+            <div id="nav2"><button class="NavButtonBlue " onclick="goToPage('ready.php')">Ready</button></div>
+            <div id="nav3"><button class="NavButtonWhite " onclick="goToPage('daysales.php')">Daysales</button></div>
+            <div id="nav4"><button class="NavButtonWhite " onclick="goToPage('inventory.php')">Inventory</button></div>
         </div>
     </header>
     <main>
