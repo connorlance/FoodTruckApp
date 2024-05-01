@@ -361,6 +361,32 @@ html {
   box-sizing: border-box;
 }
 
+#updateCost_container {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5em;
+}
+
+#UpdateCostItemName {
+  flex-grow: 2;
+  margin-right: 5px;
+}
+#UpdateCostItemName select {
+  height: 2.4em;
+  width: 100%;
+  background-color: white;
+  color: grey;
+  margin-right: 5px;
+}
+
+#UpdateInventoryCost {
+}
+#UpdateInventoryCost input {
+}
+
+#updateCostSubmitButton {
+}
+
 #removeInventory_container {
   display: flex;
   width: 100%;
@@ -380,7 +406,7 @@ html {
 #RemoveInventorySubmitButton {
   height: 2em;
   margin-top: 0.5em;
-  margin-left: 0.5em;
+  margin-left: 0.25em;
 }
 
 #InventoryUpdateItemQtyTitle_container {
@@ -464,6 +490,7 @@ html {
 }
 
 .SubmitButtonRed {
+  min-width: 4em;
   height: 2em;
   width: 100%;
   font-size: 1em;
@@ -541,6 +568,7 @@ html {
 }
 
 .UpdateButton {
+  flex-grow: 1;
   max-width: 5em;
   min-width: 4em;
   height: 2em;
@@ -586,6 +614,11 @@ html {
 
 /* iPhone 11 Pro IOS 14.6*/
 @media only screen and (max-width: 375px) {
+  #UpdateCostItemName {
+    flex-grow: 1;
+    max-width: 14em;
+  }
+
   #InventoryUpdateItemQtyTitle_item {
     width: 157.4px;
     text-align: left;

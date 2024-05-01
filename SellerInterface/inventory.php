@@ -36,6 +36,36 @@
                 </div>
             </form>
 
+            <form action="php/updateCost.php" method="POST">
+                <div id='updateCost_container'>
+                    <div id="UpdateCostItemName">
+                        <select name="description">
+                            <option value="">Select Item</option>
+                            <?php
+                            // Connect to database
+                            require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+
+                            // Perform SQL query to fetch items
+                            $sql = "SELECT description, cost FROM item";
+                            $result = $conn->query($sql);
+
+                            // Check if there are rows returned
+                            if ($result->num_rows > 0) {
+                                // Output data of each row
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<option value='" . $row['description'] . "'>" . $row['description'] . " - Current cost: " . $row['cost'] . "</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id='UpdateInventoryCost'><input type="text" name="updateCost" placeholder="New Cost."></div>
+
+                    <div id="updateCostSubmitButton"><input type="submit" class="UpdateButton" value="Update"></div>
+                </div>
+            </form>
+
             <form action="php/removeInventory.php" method="POST">
                 <div id='removeInventory_container'>
                     <div id="RemoveItemName">
