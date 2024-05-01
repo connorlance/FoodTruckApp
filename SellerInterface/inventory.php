@@ -32,14 +32,14 @@
                     <div id="NewItemName"><input type="text" name="description" placeholder="New item Name |"></div>
                     <div id="UpdateInventoryQuanity"><input type="text" name="quantity" placeholder="Qty."></div>
                     <div id="UpdateInventoryCost"><input type="text" name="cost" placeholder="Cost."></div>
-                    <div id="UpdateInventorySubmitButton"><input type="submit" class="SubmitButton" value="Add"></div>
+                    <div id="UpdateInventorySubmitButton"><input type="submit" class="SubmitButtonGreen" value="Add"></div>
                 </div>
             </form>
 
             <form action="php/removeInventory.php" method="POST">
                 <div id='removeInventory_container'>
                     <div id="RemoveItemName">
-                        <select name="item_description">
+                        <select name="description">
                             <option value="">Select Item</option>
                             <?php
                             // Connect to database
@@ -60,8 +60,7 @@
                             ?>
                         </select>
                     </div>
-                    <div id="RemoveInventorySubmitButton"><input type="submit" class="SubmitButton" value="Remove">
-                    </div>
+                    <div id="RemoveInventorySubmitButton"><input type="submit" class="SubmitButtonRed" value="Remove"></div>
                 </div>
             </form>
 

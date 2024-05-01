@@ -27,48 +27,68 @@ $select = "SELECT * FROM item ORDER BY qty";
 $result = $conn->query($select);
 
 //create boolean variable
-$restockingDisplayed = false;
+$ItemQtyTitle = false;
+
 
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
-    //create form for updating inventory
+    // Create form for updating inventory
     echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
 
-    //create variables
+    // Create variables
     $itemId = $row["iid"];
     $quantity = $row["qty"];
 
-    //set qty color to red if qty < 5
+    // Set qty color to red if qty < 5
     $color = ($quantity < 5) ? 'red' : 'black';
     $restocking = ($quantity < 5) ? true : false;
 
-    //output red if restocking = true, only 1 time
-    if ($restocking && !$restockingDisplayed) {
-      echo "<p style='color: red;'>Restocking</p>";
-      $restockingDisplayed = true;
+    // Output Item and Qty titles once
+    if ($ItemQtyTitle == false) {
+      echo "<div id='InventoryUpdateItemQtyTitle_container'>";
+      echo "<div id='InventoryUpdateItemQtyTitle_item'>";
+      echo "Item";
+      echo "</div>";
+      echo "<div id='InventoryUpdateItemQtyTitle_qty'>";
+      echo "Qty";
+      echo "</div>";
+      echo "</div>";
+      $ItemQtyTitle = true;
     }
 
-    //create description, qty text boxes
-    echo "Item: <input type='text' name='item' value= '" . $row["description"] . "'readonly style='width: 100px;'>";
-    echo "Qty: <input type='text' id='qty" . $itemId . "' name='quantity' value= '" . $quantity . "' style='color: " . $color . "; width: 20px;'>";
+    // Create description, qty text boxes
+    echo "<div id='InventoryUpdateItemQty_container'>";
 
-    //hidden variable
+    echo "<div id='InventoryUpdateDescription'>";
+    echo "<input type='text' name='item' value= '" . $row["description"] . "'readonly>";
+    echo "</div>";
+
+    echo "<div id='InventoryUpdateQty'>";
+    echo "<input type='text' id='qty" . $itemId . "' name='quantity' value= '" . $quantity . "'style='color: " . $color . ";'>";
+    echo "</div>";
+
+    // Hidden variable
     echo "<input type='hidden' name='ID' value= '" . $itemId . "'>";
 
-    echo " ";
+    // Minus button
+    echo "<div id='MinusButton'>";
+    echo '<button type="button" class="MinusButton" onclick="decrement(' . $itemId . ')" class="decrement-btn">-</button>';
+    echo "</div>";
 
-    //- and + buttons
-    echo '<button type="button" class="ButtonClassBlue2" onclick="decrement(' . $itemId . ')" class="decrement-btn">-</button>';
-    echo '<button type="button" class="ButtonClassBlue2" onclick="increment(' . $itemId . ')" class="increment-btn">+</button>';
+    // Plus button
+    echo "<div id='PlusButton'>";
+    echo '<button type="button" class="PlusButton" onclick="increment(' . $itemId . ')" class="increment-btn">+</button>';
+    echo "</div>";
 
-    echo " ";
+    // Update button
+    echo "<div id='UpdateInventoryQtySubmitButton'>";
+    echo '<input type="submit" name="submit_forms" value="Update" class="UpdateButton">';
+    echo "</div>";
 
-    //update button
-    echo '<input type="submit" name="submit_forms" value="Update" class="ButtonClassBlue2">';
-    echo "</form>\n";
+    echo "</form>"; // Close the form for each iteration
+    echo "</div>"; // Close InventoryUpdateItemQty_container
   }
 } else {
   echo "0 results";
 }
-
 $conn->close();
