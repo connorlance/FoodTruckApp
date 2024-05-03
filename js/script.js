@@ -52,11 +52,15 @@ function increment(itemId) {
   var value = parseInt(input.value, 10);
 
   if (!isNaN(value)) {
-    if (value + 1 > 5) {
-      input.style.color = "green"; // Change text color to green
-    }
-
     input.value = value + 1;
+
+    // Change text color to green if value is greater than 5
+    if (input.value > 5) {
+      input.style.color = "green";
+    } else {
+      // Otherwise, change text color to red
+      input.style.color = "red";
+    }
   }
 }
 
@@ -66,10 +70,59 @@ function decrement(itemId) {
   var value = parseInt(input.value, 10);
 
   if (!isNaN(value)) {
-    if (value <= 5) {
-      input.style.color = "red"; // Change text color back to red
-    }
-
     input.value = Math.max(0, value - 1);
+
+    // Change text color to red if value is 5 or below
+    if (input.value <= 5) {
+      input.style.color = "red";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Retrieve the state from session storage
+  var isContentVisible = sessionStorage.getItem("isContentVisible");
+  var manageInventoryOptions = document.getElementById(
+    "manageInventoryOptions"
+  );
+  var toggleButton = document.getElementById("toggleButton");
+
+  // Check if the content should be visible or hidden based on the stored state
+  if (isContentVisible === "true") {
+    manageInventoryOptions.style.display = "block";
+    toggleButton.textContent = "Minimize";
+    toggleButton.classList.add("active");
+  } else {
+    manageInventoryOptions.style.display = "none";
+    toggleButton.textContent = "Item and Location Options";
+    toggleButton.classList.remove("active");
+  }
+});
+
+function toggleManageInventoryOptions() {
+  var manageInventoryOptions = document.getElementById(
+    "manageInventoryOptions"
+  );
+  var toggleButton = document.getElementById("toggleButton");
+
+  // Check if the content is currently visible
+  var isVisible =
+    manageInventoryOptions.style.display === "block" ||
+    manageInventoryOptions.classList.contains("active");
+
+  if (!isVisible) {
+    // If it's not visible, show it
+    manageInventoryOptions.style.display = "block";
+    toggleButton.textContent = "Minimize";
+    toggleButton.classList.add("active");
+    // Store the state in session storage
+    sessionStorage.setItem("isContentVisible", "true");
+  } else {
+    // If it's visible, hide it
+    manageInventoryOptions.style.display = "none";
+    toggleButton.textContent = "Item and Location Options";
+    toggleButton.classList.remove("active");
+    // Update the state in session storage
+    sessionStorage.setItem("isContentVisible", "false");
   }
 }

@@ -299,6 +299,20 @@ html {
 }
 
 /* Inventory Page*/
+#manageInventoryOptions {
+  display: none; /* Hide the PHP includes by default */
+}
+#toggleButton {
+}
+#toggleButton.active:hover {
+  background-color: #fa7070;
+  color: #000000;
+  /* Add any other styles you want to apply on hover */
+}
+#toggleButton.active {
+  background-color: #e23939;
+  margin-top: 0.5em;
+}
 
 #UpdateInventory_container {
   display: flex;
@@ -461,6 +475,102 @@ html {
 #UpdateInventoryQtySubmitButton {
   margin-left: 1em;
   flex-grow: 1;
+}
+
+#insertLocation_container {
+  display: flex;
+  width: 100%;
+}
+
+#insertLocationName {
+  flex-grow: 1;
+  min-width: 13em;
+  margin-right: 5px;
+  margin-top: 0.5em;
+}
+
+#insertLocationName input {
+  width: 100%;
+  min-width: 13em;
+  height: 2.4em;
+  padding: 0.5em;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+#insertLocationArrival {
+  width: 100%;
+  margin-right: 5px;
+  margin-top: 0.5em;
+}
+#insertLocationArrival input {
+  width: 100%;
+  height: 2.4em;
+  padding: 0.5em;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+
+#insertLocationSubmitButton {
+  min-width: 4em;
+  margin-top: 0.5em;
+}
+
+#updateLocation_container {
+  display: flex;
+  width: 100%;
+}
+
+#updateLocationSelect {
+  flex-grow: 1;
+  min-width: 13em;
+  margin-right: 5px;
+  margin-top: 0.5em;
+}
+#updateLocationSelect select {
+  width: 100%;
+  min-width: 13em;
+  height: 2.4em;
+  margin-right: 5px;
+  height: 2.4em;
+  width: 100%;
+  background-color: white;
+  color: grey;
+}
+
+#updateLocationArrival {
+  width: 100%;
+  margin-right: 5px;
+  margin-top: 0.5em;
+}
+#updateLocationArrival input {
+  width: 100%;
+  height: 2.4em;
+  padding: 0.5em;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+
+#insertLocationSubmitButton {
+}
+
+#removeLocation_container {
+  display: flex;
+  width: 100%;
+}
+#removeLocationName {
+  margin-top: 0.5em;
+  flex-grow: 1;
+}
+#removeLocationName select {
+  height: 2.4em;
+  width: 100%;
+  background-color: white;
+  color: grey;
+}
+#removeLocationSubmitButton {
+  height: 2em;
+  margin-top: 0.5em;
+  margin-left: 0.25em;
 }
 
 .SubmitButtonGreen {

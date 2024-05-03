@@ -2,9 +2,7 @@
 //connect to database
 require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
 
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
+
 
 // Check if the form is submitted for updating inventory
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_forms'])) {
@@ -40,7 +38,7 @@ if ($result->num_rows > 0) {
     $quantity = $row["qty"];
 
     // Set qty color to red if qty < 5
-    $color = ($quantity < 5) ? 'red' : 'black';
+    $color = ($quantity <= 5) ? 'red' : 'black';
     $restocking = ($quantity < 5) ? true : false;
 
     // Output Item and Qty titles once

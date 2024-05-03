@@ -24,10 +24,11 @@
     <main>
 
         <div id="contentBelowNav">
-        
+
 
             <?php
             session_start();
+            $_SESSION['orderType'] = 'null';
             $_SESSION['page'] = 'daySales';
 
 
@@ -50,7 +51,6 @@
                         //compute sum of all totalCost
                         $sumTotalCost = $sumTotalCost + $row3['totalCost'];
                         $numOrders = $result3->num_rows;
-
                     }
                     echo "<br>";
 
@@ -64,15 +64,13 @@
                     echo "Total sales: $" . $sumTotalCost;
                     echo "</div>";
                     echo "</div";
-
-
                 } else {
                     echo "0 results";
                 }
                 ?>
             </footer>
         </div>
-<div id="navMargin"></div>
+        <div id="navMargin"></div>
 
     </main>
 </body>

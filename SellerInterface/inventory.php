@@ -23,78 +23,24 @@
     </header>
 
     <main>
-
         <div id="contentBelowNav">
+            <?php
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+            ?>
 
-            <!--Form for inserting new item-->
-            <form action="php/insertInventory.php" method="POST">
-                <div id='UpdateInventory_container'>
-                    <div id="NewItemName"><input type="text" name="description" placeholder="New item Name |"></div>
-                    <div id="UpdateInventoryQuanity"><input type="text" name="quantity" placeholder="Qty."></div>
-                    <div id="UpdateInventoryCost"><input type="text" name="cost" placeholder="Cost."></div>
-                    <div id="UpdateInventorySubmitButton"><input type="submit" class="SubmitButtonGreen" value="Add"></div>
-                </div>
-            </form>
-
-            <form action="php/updateCost.php" method="POST">
-                <div id='updateCost_container'>
-                    <div id="UpdateCostItemName">
-                        <select name="description">
-                            <option value="">Select Item</option>
-                            <?php
-                            // Connect to database
-                            require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
-                            $conn = new mysqli($servername, $username, $password, $dbname);
-
-                            // Perform SQL query to fetch items
-                            $sql = "SELECT description, cost FROM item";
-                            $result = $conn->query($sql);
-
-                            // Check if there are rows returned
-                            if ($result->num_rows > 0) {
-                                // Output data of each row
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<option value='" . $row['description'] . "'>" . $row['description'] . " - Current cost: " . $row['cost'] . "</option>";
-                                }
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div id='UpdateInventoryCost'><input type="text" name="updateCost" placeholder="New Cost."></div>
-
-                    <div id="updateCostSubmitButton"><input type="submit" class="UpdateButton" value="Update"></div>
-                </div>
-            </form>
-
-            <form action="php/removeInventory.php" method="POST">
-                <div id='removeInventory_container'>
-                    <div id="RemoveItemName">
-                        <select name="description">
-                            <option value="">Select Item</option>
-                            <?php
-                            // Connect to database
-                            require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
-                            $conn = new mysqli($servername, $username, $password, $dbname);
-
-                            // Perform SQL query to fetch items
-                            $sql = "SELECT description FROM item";
-                            $result = $conn->query($sql);
-
-                            // Check if there are rows returned
-                            if ($result->num_rows > 0) {
-                                // Output data of each row
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<option value='" . $row['description'] . "'>" . $row['description'] . "</option>";
-                                }
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div id="RemoveInventorySubmitButton"><input type="submit" class="SubmitButtonRed" value="Remove"></div>
-                </div>
-            </form>
-
-            <!--Generate update inventory forms-->
+            <div id="manageInventoryOptions">
+                <?php
+                include_once "php/insertInventory.php";
+                include_once "php/updateCost.php";
+                include_once "php/removeInventory.php";
+                include_once "php/insertLocation.php";
+                include_once "php/updateLocation.php";
+                include_once "php/removeLocation.php";
+                ?>
+            </div>
+            <button id="toggleButton" class="SubmitButtonGreen" onclick="toggleManageInventoryOptions()">Item and Location Options</button>
             <?php
             include_once "php/updateInventory.php";
             ?>
