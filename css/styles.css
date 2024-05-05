@@ -172,6 +172,14 @@ html {
 .button_div {
   flex-grow: 1;
 }
+.customer-order-items {
+  display: inline-block;
+  max-width: calc(100% - 60px); /* Adjust the width as needed */
+  word-wrap: break-word; /* Wrap long words */
+}
+.item {
+  white-space: nowrap; /* Prevent line breaks within the span */
+}
 
 /* X Button */
 
@@ -717,6 +725,33 @@ html {
 .UpdateButton:hover {
   background-color: #9dd3fa;
   color: #000000;
+}
+
+/* Expanded Order Buttons */
+#expandedOrderButtonSection2 {
+  text-align: center;
+}
+.expandedButtonLocationName {
+  display: inline-block;
+  margin-right: 1em;
+}
+.expandedButtonOrderNumber {
+  display: inline-block;
+}
+.expandedButtonCustomerName {
+}
+.expandedButtonTotal {
+}
+.expandedButtonCustomerNameLineBelow {
+  width: 100%;
+  border-bottom: solid 1px black;
+}
+.expandedButtonItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  text-align: left; /* Align text to the left */
 }
 
 /* iPad iPadOS 14.7.1*/

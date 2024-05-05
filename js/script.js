@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var toggleButton = document.getElementById("toggleButton");
   var daySalesItemForms = document.getElementById("daySalesItemForms");
 
-  // Check if manageInventoryOptions exists before accessing it
+  // Check if manageInventoryOptions is null before using it
   if (manageInventoryOptions) {
     // Check if the content should be visible or hidden based on the stored state
     if (isContentVisible === "true") {
@@ -104,6 +104,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+function toggleManageInventoryOptions() {
+  var manageInventoryOptions = document.getElementById(
+    "manageInventoryOptions"
+  );
+  var toggleButton = document.getElementById("toggleButton");
+  var daySalesItemForms = document.getElementById("daySalesItemForms");
+
+  // Check if manageInventoryOptions is null before using it
+  if (manageInventoryOptions) {
+    // Check if the content is currently visible
+    var isVisible =
+      manageInventoryOptions.style.display === "block" ||
+      manageInventoryOptions.classList.contains("active");
+
+    if (!isVisible) {
+      // If it's not visible, show it
+      manageInventoryOptions.style.display = "block";
+      toggleButton.textContent = "Minimize";
+      toggleButton.classList.add("active");
+      daySalesItemForms.style.marginTop = "20em"; // Adjust marginTop
+      // Store the state in session storage
+      sessionStorage.setItem("isContentVisible", "true");
+    } else {
+      // If it's visible, hide it
+      manageInventoryOptions.style.display = "none";
+      toggleButton.textContent = "Item and Location Options";
+      toggleButton.classList.remove("active");
+      daySalesItemForms.style.marginTop = "5em"; // Adjust marginTop
+
+      // Update the state in session storage
+      sessionStorage.setItem("isContentVisible", "false");
+    }
+  }
+}
+
 function toggleOrderButtons(oid) {
   try {
     var section1 = document.querySelector(".section1_" + oid);

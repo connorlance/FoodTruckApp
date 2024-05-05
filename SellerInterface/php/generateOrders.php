@@ -18,6 +18,7 @@ if ($result->num_rows > 0) {
         $oid = $row['oid'];
         $lid = $row['lid'];
         $status = $row['status'];
+        $customerOrderItems = "";
 
         // Container and form for respective order type
         if ($page == 'daySales') {
@@ -71,7 +72,7 @@ if ($result->num_rows > 0) {
                 if ($result3->num_rows > 0) {
                     while ($row3 = $result3->fetch_assoc()) {
                         // Create qty + description
-                        $item = $qty . " " . $row3['description'];
+                        $item = "<span class='item'>$qty " . $row3['description'] . "</span>";
                         // Add $item to array
                         $items[] = $item;
                     }
@@ -81,22 +82,93 @@ if ($result->num_rows > 0) {
             }
 
             // Display item descriptions inside the buttons
-            echo "<div style='display: inline-block; margin-right: 10px;'>";
-            echo " " . implode(" | ", $items) . "\n";
+            echo "<div class='customer-order-items'>";
+            $customerOrderItems = implode(" | ", $items);
+            echo $customerOrderItems . "\n";
             echo "</div>";
-            echo "<br>";
         } else {
             echo "error";
         }
         echo "</div>";
 
-
         // Section 2
-        echo "<div class='section2_$oid' style='display:none;'>";
+        echo "<div class='section2_$oid' id='expandedOrderButtonSection2' style='display:none;'>";
+
+        // SQL Query: Fetch relevant data from the orders, location, and order_items tables
+        $select4 = "SELECT 
+                        o.*, 
+                        l.name AS location_name, 
+                        oi.qty, 
+                        i.description AS item_description 
+                    FROM 
+                        orders o
+                    INNER JOIN 
+                        location l ON o.lid = l.lid
+                    INNER JOIN 
+                        order_items oi ON o.oid = oi.oid
+                    INNER JOIN 
+                        item i ON oi.iid = i.iid
+                    WHERE 
+                        o.oid = '$oid'";
+        $result4 = $conn->query($select4);
+
+        // Check if any results are returned
+        if ($result4->num_rows > 0) {
+            $row4 = $result4->fetch_assoc(); // Fetch the first (and only) row
+
+            // Fetch data from the result set
+            $locationName = $row4['location_name'];
+            $customerName = $row4['cname']; // Assuming cname is a column in the orders table
+            $totalCost = $row4['totalCost']; // Assuming totalCost is a column in the orders table
+
+            echo "<div class='expandedButtonLocationName'>";
+            echo $locationName;
+            echo "</div>";
+
+            echo "<div class='expandedButtonOrderNumber'>";
+            echo "Order: #" . $oid;
+            echo "</div>";
+
+            echo "<div class='expandedButtonCustomerName'>";
+            echo $customerName;
+            echo "</div>";
+
+            echo "<div class='expandedButtonTotal'>";
+            echo "Total: $" . $totalCost;
+            echo "</div>";
+
+            echo "<div class='expandedButtonCustomerNameLineBelow'>";
+            echo "";
+            echo "</div>";
+
+
+            echo "<div class='expandedButtonItems'>";
+            // Query order_items, item tables using oid
+            $select5 = "SELECT order_items.qty, item.description 
+                        FROM order_items 
+                        INNER JOIN item ON order_items.iid = item.iid 
+                        WHERE order_items.oid='$oid'";
+            $result5 = $conn->query($select5);
+
+            // Output each qty and description for order
+            if ($result5->num_rows > 0) {
+                while ($row5 = $result5->fetch_assoc()) {
+                    echo $row5['qty'] . " ";
+                    echo $row5['description'];
+                    echo "<br>";
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+        echo "</div>";
+
+
 
 
 
         echo "</div>";
+
 
         // Close the button
         echo "</button>";
