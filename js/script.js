@@ -104,124 +104,84 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+function toggleOrderButtons(oid) {
+  try {
+    var section1 = document.querySelector(".section1_" + oid);
+    var section2 = document.querySelector(".section2_" + oid);
 
-function toggleManageInventoryOptions() {
-  var manageInventoryOptions = document.getElementById(
-    "manageInventoryOptions"
-  );
-  var toggleButton = document.getElementById("toggleButton");
-  var daySalesItemForms = document.getElementById("daySalesItemForms");
+    // Check if either section1 or section2 is null
+    if (!section1 || !section2) {
+      throw new Error("One of the sections is null.");
+    }
 
-  // Check if the content is currently visible
-  var isVisible =
-    manageInventoryOptions.style.display === "block" ||
-    manageInventoryOptions.classList.contains("active");
-
-  if (!isVisible) {
-    // If it's not visible, show it
-    manageInventoryOptions.style.display = "block";
-    toggleButton.textContent = "Minimize";
-    toggleButton.classList.add("active");
-    daySalesItemForms.style.marginTop = "20em"; // Adjust marginTop
-    // Store the state in session storage
-    sessionStorage.setItem("isContentVisible", "true");
-  } else {
-    // If it's visible, hide it
-    manageInventoryOptions.style.display = "none";
-    toggleButton.textContent = "Item and Location Options";
-    toggleButton.classList.remove("active");
-    daySalesItemForms.style.marginTop = "5em"; // Adjust marginTop
-
-    // Update the state in session storage
-    sessionStorage.setItem("isContentVisible", "false");
+    // Toggle the visibility based on the current state
+    if (section1.style.display === "none") {
+      section1.style.display = "block";
+      section2.style.display = "none";
+      // Update state in localStorage
+      updateLocalStorage(oid, "section1");
+    } else {
+      section1.style.display = "none";
+      section2.style.display = "block";
+      // Update state in localStorage
+      updateLocalStorage(oid, "section2");
+    }
+  } catch (error) {
+    console.error(error.message);
   }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  var buttonDivs = document.querySelectorAll(".button_div");
+  // Retrieve the state from localStorage
+  var visibleSections =
+    JSON.parse(localStorage.getItem("visibleSections")) || {};
 
-  // Attach a click event listener to each button_div container
-  buttonDivs.forEach(function (buttonDiv) {
-    buttonDiv.addEventListener("click", function (event) {
-      console.log("Clicked on button!");
-      // Check if the clicked element is a button with the class 'orderButton'
-      if (event.target.classList.contains("orderButton")) {
-        toggleOrderButtons(event);
+  // Loop through each order id to set the visibility state
+  Object.keys(visibleSections).forEach(function (oid) {
+    var section1 = document.querySelector(".section1_" + oid);
+    var section2 = document.querySelector(".section2_" + oid);
+
+    if (section1 && section2) {
+      if (visibleSections[oid] === "section1") {
+        section1.style.display = "block";
+        section2.style.display = "none";
+      } else {
+        section1.style.display = "none";
+        section2.style.display = "block";
       }
-    });
+    } else {
+      // If one of the sections is null, remove its entry from localStorage
+      delete visibleSections[oid];
+    }
   });
+
+  // Update the localStorage with valid sections
+  localStorage.setItem("visibleSections", JSON.stringify(visibleSections));
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  var buttonDivs = document.querySelectorAll(".button_div");
-
-  // Attach a click event listener to each button_div container
-  buttonDivs.forEach(function (buttonDiv) {
-    buttonDiv.addEventListener("click", function (event) {
-      console.log("Clicked on button!");
-      // Check if the clicked element is a button with the class 'orderButton'
-      if (event.target.classList.contains("orderButton")) {
-        toggleOrderButtons(event);
-      }
-    });
-  });
-});
-
-function toggleOrderButtons(event) {
-  console.log("Toggling buttons...");
-
-  // Get the clicked button
-  var clickedButton = event.target;
-
-  // Extract the button ID
-  var buttonId = clickedButton.id;
-
-  // Extract the button number (1 or 2)
-  var buttonNumber = buttonId.split("_")[1];
-
-  // Construct the IDs of the buttons to toggle
-  var orderButton1 = document.getElementById("orderButton1_" + buttonNumber);
-  var orderButton2 = document.getElementById("orderButton2_" + buttonNumber);
-
-  // Toggle visibility based on the clicked button
-  if (clickedButton === orderButton1) {
-    console.log("Button 1 clicked!");
-    orderButton1.style.display = "none";
-    orderButton2.style.display = "block";
-  } else if (clickedButton === orderButton2) {
-    console.log("Button 2 clicked!");
-    orderButton1.style.display = "block";
-    orderButton2.style.display = "none";
-  }
-
-  // Store the visibility of buttons in local storage
-  localStorage.setItem(
-    "orderButton1_" + buttonNumber,
-    orderButton1.style.display
-  );
-  localStorage.setItem(
-    "orderButton2_" + buttonNumber,
-    orderButton2.style.display
-  );
+function updateLocalStorage(oid, section) {
+  // Retrieve existing state from localStorage
+  var visibleSections =
+    JSON.parse(localStorage.getItem("visibleSections")) || {};
+  // Update state with the new visibility
+  visibleSections[oid] = section;
+  // Store the updated state back in localStorage
+  localStorage.setItem("visibleSections", JSON.stringify(visibleSections));
 }
+// Add event listeners to navigation buttons
+document.addEventListener("DOMContentLoaded", function () {
+  var navButtons = document.querySelectorAll(
+    "#nav1 button, #nav2 button, #nav3 button, #nav4 button"
+  );
 
-// Restore the visibility of buttons from local storage on page load
-window.onload = function () {
-  var buttonDivs = document.querySelectorAll(".button_div");
-
-  buttonDivs.forEach(function (buttonDiv) {
-    var buttonNumber = buttonDiv.querySelector("button").id.split("_")[1];
-    var orderButton1 = document.getElementById("orderButton1_" + buttonNumber);
-    var orderButton2 = document.getElementById("orderButton2_" + buttonNumber);
-    var display1 = localStorage.getItem("orderButton1_" + buttonNumber);
-    var display2 = localStorage.getItem("orderButton2_" + buttonNumber);
-
-    if (display1 !== null) {
-      orderButton1.style.display = display1;
-    }
-
-    if (display2 !== null) {
-      orderButton2.style.display = display2;
-    }
+  navButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      clearLocalStorage();
+    });
   });
-};
+});
+
+// Function to clear localStorage
+function clearLocalStorage() {
+  localStorage.removeItem("visibleSections");
+}

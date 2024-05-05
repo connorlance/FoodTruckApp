@@ -172,9 +172,7 @@ html {
 .button_div {
   flex-grow: 1;
 }
-#orderButton2 {
-  display: none;
-}
+
 /* X Button */
 
 .XButtonRed {

@@ -41,11 +41,14 @@ if ($result->num_rows > 0) {
 
         // Form for order buttons
         echo "<div class='$container_class'>";
-        // Open inner div for buttons (added)
+        // Open inner div for buttons
         echo "<div class='button_div'>";
 
         // Button for order status
-        echo "<button type='submit' class='$button_class' id='orderButton1_$oid' onclick='toggleOrderButtons(event)'>";
+        echo "<button type='button' class='$button_class' id='orderButton1_$oid' onclick='toggleOrderButtons($oid)'>";
+
+        // Section 1
+        echo "<div class='section1_$oid'>";
         echo "<span style='float: left; display: inline-block;'>&nbsp;#$lid | </span>";
 
         // Query order_items table using oid
@@ -85,15 +88,20 @@ if ($result->num_rows > 0) {
         } else {
             echo "error";
         }
+        echo "</div>";
+
+
+        // Section 2
+        echo "<div class='section2_$oid' style='display:none;'>";
+
+
+
+        echo "</div>";
+
+        // Close the button
         echo "</button>";
 
-        echo "<button type='submit' class='$button_class' id='orderButton2_$oid' onclick='toggleOrderButtons(event)' style='display: none'>";
-
-        echo "orderbutton 22222222222222222222222222222222222222222222222222222222222222222222222";
-
-        echo "</button>";
-
-        // Close inner div for buttons (added)
+        // Close inner div for buttons
         echo "</div>";
 
         // Form for X button
