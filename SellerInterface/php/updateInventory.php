@@ -1,4 +1,5 @@
 <?php
+ob_start();
 //connect to database
 require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
 

@@ -43,14 +43,9 @@ if ($result->num_rows > 0) {
         echo "<div class='$container_class'>";
         // Open inner div for buttons (added)
         echo "<div class='button_div'>";
-        echo "<form method='post' action='php/expandedOrder.php'>";
-
-        // Hidden variables
-        echo "<input type='hidden' name='oid' value='$oid'>";
-        echo "<input type='hidden' name='lid' value='$lid'>";
 
         // Button for order status
-        echo "<button type='submit' class='$button_class'>";
+        echo "<button type='submit' class='$button_class' id='orderButton1_$oid' onclick='toggleOrderButtons(event)'>";
         echo "<span style='float: left; display: inline-block;'>&nbsp;#$lid | </span>";
 
         // Query order_items table using oid
@@ -84,7 +79,7 @@ if ($result->num_rows > 0) {
 
             // Display item descriptions inside the buttons
             echo "<div style='display: inline-block; margin-right: 10px;'>";
-            echo " " . implode(" & ", $items) . "\n";
+            echo " " . implode(" | ", $items) . "\n";
             echo "</div>";
             echo "<br>";
         } else {
@@ -92,9 +87,14 @@ if ($result->num_rows > 0) {
         }
         echo "</button>";
 
+        echo "<button type='submit' class='$button_class' id='orderButton2_$oid' onclick='toggleOrderButtons(event)' style='display: none'>";
+
+        echo "orderbutton 22222222222222222222222222222222222222222222222222222222222222222222222";
+
+        echo "</button>";
+
         // Close inner div for buttons (added)
         echo "</div>";
-        echo "</form>";
 
         // Form for X button
         if ($page == 'open' || $page == 'ready') {

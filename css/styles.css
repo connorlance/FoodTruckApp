@@ -88,7 +88,7 @@ html {
   position: fixed;
   top: 2.5em;
   width: 100%;
-  height: 0.4em;
+  height: 0.45em;
   background-color: #dddddd;
 }
 
@@ -172,7 +172,9 @@ html {
 .button_div {
   flex-grow: 1;
 }
-
+#orderButton2 {
+  display: none;
+}
 /* X Button */
 
 .XButtonRed {
@@ -299,15 +301,26 @@ html {
 }
 
 /* Inventory Page*/
+#daySalesOptionForms {
+  position: fixed;
+  top: 2.95em;
+  left: 0;
+  width: 100%;
+  background-color: #dddddd;
+}
+
+#daySalesItemForms {
+  margin-top: 5em;
+}
+
 #manageInventoryOptions {
-  display: none; /* Hide the PHP includes by default */
+  display: none;
 }
 #toggleButton {
 }
 #toggleButton.active:hover {
   background-color: #fa7070;
   color: #000000;
-  /* Add any other styles you want to apply on hover */
 }
 #toggleButton.active {
   background-color: #e23939;
@@ -364,8 +377,8 @@ html {
 }
 
 #UpdateInventorySubmitButton {
-  flex-grow: 1;
   box-sizing: border-box;
+  min-width: 64px;
 }
 
 #UpdateInventorySubmitButton input[type="submit"] {

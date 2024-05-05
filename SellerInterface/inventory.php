@@ -30,20 +30,25 @@
             }
             ?>
 
-            <div id="manageInventoryOptions">
+            <div id="daySalesOptionForms">
+                <div id="manageInventoryOptions">
+                    <?php
+                    include_once "php/insertInventory.php";
+                    include_once "php/updateCost.php";
+                    include_once "php/removeInventory.php";
+                    include_once "php/insertLocation.php";
+                    include_once "php/updateLocation.php";
+                    include_once "php/removeLocation.php";
+                    ?>
+                </div>
+                <button id="toggleButton" class="SubmitButtonGreen" onclick="toggleManageInventoryOptions()">Item and Location Options</button>
+            </div>
+
+            <div id="daySalesItemForms">
                 <?php
-                include_once "php/insertInventory.php";
-                include_once "php/updateCost.php";
-                include_once "php/removeInventory.php";
-                include_once "php/insertLocation.php";
-                include_once "php/updateLocation.php";
-                include_once "php/removeLocation.php";
+                include_once "php/updateInventory.php";
                 ?>
             </div>
-            <button id="toggleButton" class="SubmitButtonGreen" onclick="toggleManageInventoryOptions()">Item and Location Options</button>
-            <?php
-            include_once "php/updateInventory.php";
-            ?>
         </div>
         <div id="navMargin"></div>
     </main>
