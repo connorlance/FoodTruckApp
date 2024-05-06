@@ -1,8 +1,9 @@
+<link rel="stylesheet" href="../../css/styles.css">
+<script src="../../js/script.js"></script>
+
 <?php
-//connect to database
 require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
 
-//initilize session variable
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -12,22 +13,13 @@ $arrival = isset($_SESSION['arrival']) ? $_SESSION['arrival'] : '';
 $cname = isset($_SESSION['cname']) ? $_SESSION['cname'] : '';
 $totalCost = 0;
 
-//query orers table to set status to open
-$query = "UPDATE orders SET status='open'WHERE oid='$oid'";
-$result = $conn->query($query);
-
-echo '<body style="background-color: #dddddd;">';
-echo '<div style="font-size: 3em; text-align: center; border-bottom: 1px solid black;">Order Submitted</div>';
 echo "<div id='cartTitle_container'>";
+echo "<div id='cartBackButton'> <button class='cartBackButton' onclick='goToPage(\"../chooseOrderItems.php\")'>Back</button></div>";
+echo "<div id='cartTitle'>Cart</div>";
 echo "</div>";
 
-// Echo info for order summary
-echo '<div style="text-align: center; font-size: 1.5em; border-bottom: 1px solid black;">';
-echo "Order #: $oid<br>";
-echo "Location: $name<br>";
-echo "Arrival: $arrival<br>";
-echo "Customer Name: $cname<br>";
-echo '</div>';
+
+
 
 // Echo header row for item details
 echo '<div style="text-align: center; font-size: 1.5em; border-bottom: 1px solid black;">Item | Qty | Cost</div>';
@@ -71,5 +63,6 @@ if ($result->num_rows > 0) {
     // Handle case where no order items found
 }
 
-// Close the body tag
-echo '</body>';
+echo '<div id="cartButton">';
+echo '<button class="cartButton" onclick="goToPage(\'../submittedOrderSummary.php\')">Submit Order</button>';
+echo '</div>';

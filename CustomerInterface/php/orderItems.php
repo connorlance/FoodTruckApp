@@ -10,31 +10,39 @@ $result = $conn->query($select);
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
     if ($row["qty"] > 0) { // Check if qty is greater than 0
-      //create forms for adding items to order
-      echo '<form method="post" action="php/insertOrderItem.php" style="display: inline-block; margin-right: 10px;">'; 
+?>
+      <form method="post" action="php/insertOrderItem.php">
+        <div class="itemPriceQtyContainer">
+          <!-- description and price form boxes -->
+          <div class="itemDescription">
+            <input type='text' name='description' value='<?php echo $row["description"]; ?>' readonly><br />
+          </div>
+          <div class="itemPrice">
+            <input type='text' name='cost' value='$<?php echo $row["cost"]; ?>' readonly><br />
+          </div>
 
-      //description and price form boxes
-      echo "Description: <input type='text' name='description' value= '" . $row["description"] . "' readonly><br/>\n";
-      echo "Price: <input type='text' name='cost' value= '" . $row["cost"] . "' readonly><br/>\n";
+          <!-- hidden variables for iid, oid, cost -->
+          <input type='hidden' name='ID' value='<?php echo $row["iid"]; ?>'>
+          <input type='hidden' name='oid' value='<?php echo $oid; ?>'>
+          <input type='hidden' name='cost' value='<?php echo $row["cost"]; ?>'>
 
-      //hidden variables for iid, oid, cost
-      echo "<input type='hidden' name='ID' value= '" . $row["iid"] . "'>";
-      echo "<input type='hidden' name='oid' value= '$oid'>";
-      echo "<input type='hidden' name='cost' value= '" . $row["cost"] . "'>";
+          <!-- buttons for - and + qty -->
+          <div class="number-input">
+            <input type="number" name="qty" id="qty<?php echo $row["iid"]; ?>" value="0" min="0" readonly>
+            <button type="button" class="MinusButton" onclick="decrementMoreThanFive(<?php echo $row["iid"]; ?>)">-</button>
+            <button type="button" class="PlusButton" onclick="incrementMoreThanFive(<?php echo $row["iid"]; ?>)">+</button>
+          </div>
 
-      //buttons for - and + qty
-      echo '<div class="number-input" style="display: inline-block;">';
-      echo 'Qty: <input type="number" name ="qty" id="qty'.$row["iid"].'" value="0" min="0" readonly>';
-      echo '<button type="button" class="ButtonClassBlue2" style="margin-left: 10px;" onclick="decrementMoreThanFive('.$row["iid"].')">-</button>'; 
-      echo '<button type="button" class="ButtonClassBlue2" onclick="incrementMoreThanFive('.$row["iid"].')">+</button>'; 
-      echo '</div>';
-      
-      // hidden field for max quantity
-      echo '<input type="hidden" id="max_qty'.$row["iid"].'" value="'.$row["qty"].'">';
-   
-      //add qty of item to order
-      echo '<input type="submit" name="submit_forms" value="Add to Order" class="ButtonClassBlue2" style="margin-left: 10px;">'; 
-      echo "</form>\n";
+          <!-- hidden field for max quantity -->
+          <input type="hidden" id="max_qty<?php echo $row["iid"]; ?>" value="<?php echo $row["qty"]; ?>">
+          <!-- add qty of item to order -->
+          <div class="itemPriceQtySubmit">
+            <input type="submit" name="submit_forms" value="Add" class="customerOrderUpdateButton">
+          </div>
+        </div>
+      </form>
+
+    <?php
     }
   }
 } else {
@@ -46,34 +54,46 @@ $select = "SELECT * FROM item WHERE qty <= 5";
 $result = $conn->query($select);
 
 if ($result->num_rows > 0) {
+  echo "<p style=\"margin-bottom: 0; margin-left: 1.2em;\"><span>Items Low in Stock:</span></p>";
   while ($row = $result->fetch_assoc()) {
+    if ($row['qty'] > 0) {
+      echo '<p style="color: red; margin: 0; margin-left: 12em; margin-bottom: .1em;">(Only ' . $row['qty'] . ' left)</p>';
+    }
     if ($row["qty"] > 0) { // Check if qty is greater than 0
-      //create forms for adding items to order
-      echo '<form method="post" action="php/insertOrderItem.php" style="display: inline-block; margin-right: 10px;">'; 
+    ?>
+      <form method="post" action="php/insertOrderItem.php">
+        <div class="itemPriceQtyContainer2">
+          <!-- description and price form boxes -->
+          <div class="itemDescription2">
+            <input type='text' name='description' value='<?php echo $row["description"]; ?>' readonly><br />
+          </div>
+          <div class="itemPrice2">
+            <input type='text' name='cost' value='$<?php echo $row["cost"]; ?>' readonly><br />
+          </div>
 
-      //description and price form boxes
-      echo "Description: <input type='text' name='description' value= '" . $row["description"] . "' readonly><br/>\n";
-      echo "Price: <input type='text' name='cost' value= '" . $row["cost"] . "' readonly><br/>\n";
+          <!-- hidden variables for iid, oid, cost -->
+          <input type='hidden' name='ID' value='<?php echo $row["iid"]; ?>'>
+          <input type='hidden' name='oid' value='<?php echo $oid; ?>'>
+          <input type='hidden' name='cost' value='<?php echo $row["cost"]; ?>'>
 
-      //hidden variables for iid, oid, cost
-      echo "<input type='hidden' name='ID' value= '" . $row["iid"] . "'>";
-      echo "<input type='hidden' name='oid' value= '$oid'>";
-      echo "<input type='hidden' name='cost' value= '" . $row["cost"] . "'>";
+          <!-- buttons for - and + qty -->
+          <div class="number-input2">
+            <input type="number" name="qty" id="qty<?php echo $row["iid"]; ?>" value="0" readonly>
+            <button type="button" class="MinusButton" onclick="decrementLessThanFive(<?php echo $row["iid"]; ?>, <?php echo $row["qty"]; ?>)">-</button>
+            <button type="button" class="PlusButton" onclick="incrementLessThanFive(<?php echo $row["iid"]; ?>, <?php echo $row["qty"]; ?>)">+</button>
+          </div>
 
-      //buttons for - and + qty
-      echo '<div class="number-input" style="display: inline-block;">';
-      echo 'Qty: <input type="text" name="qty" id="qty'.$row["iid"].'" value="0 (Only '.$row['qty'].' left)" readonly style="color: red;">';
-      echo '<button type="button" class="ButtonClassBlue2" style="margin-left: 10px;" onclick="decrementLessThanFive('.$row["iid"].', '.$row["qty"].')">-</button>';
-      echo '<button type="button" class="ButtonClassBlue2" onclick="incrementLessThanFive('.$row["iid"].', '.$row["qty"].')">+</button>';
-      echo '</div>';
-     
-      //add qty of item to order
-      echo '<input type="submit" name="submit_forms" value="Add to Order" class="ButtonClassBlue2" style="margin-left: 10px;">'; 
-      echo "</form>\n";
+          <!-- add qty of item to order -->
+          <div class="itemPriceQtySubmit2">
+            <input type="submit" name="submit_forms" value="Add" class="customerOrderUpdateButton">
+          </div>
+        </div>
+      </form>
+
+<?php
     }
   }
 } else {
   echo "0 results";
 }
 ?>
-

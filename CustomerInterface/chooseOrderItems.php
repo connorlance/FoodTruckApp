@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/script.js"></script>
@@ -9,30 +10,40 @@
     <meta name="author" content="Connor Lance">
     <meta name="description" content="This page is where the customer adds items to their order.">
 </head>
+
 <body>
 
-    <?php
-    //get session variable
-   session_start();
-   $oid = $_SESSION['oid'];
-
-   //go to file for generating order item forms
-    include_once "php/orderItems.php";
-    ?>
-
-    <div id="summary">
-        Order Summary
+    <div id="orderItemsTitle">
+        Order Items
     </div>
 
-    <!--Generate order summary-->
-    <?php
-    include_once "php/orderSummary.php";
-    ?>
+    <div>
 
-    <br>
-    
-    <!--Go to page showing only order summary without order item forms-->
-    <button class="ButtonClassWhite" onclick="goToPage('submittedOrderSummary.php')">Submit Order</button>
+        <div class="itemPriceQtyTitle_container">
+            <div class="itemCustomerTitle">
+                Item
+            </div>
+            <div class="priceCustomerTitle">
+                Price
+            </div>
+            <div class="qtyCustomerTitle">
+                Qty
+            </div>
+        </div>
+        <?php
+        //get session variable
+        session_start();
+        $oid = isset($_SESSION['oid']) ? $_SESSION['oid'] : null;
+
+        //go to file for generating order item forms
+        include_once "php/orderItems.php";
+        ?>
+
+        <div id="cartButton">
+            <button class="cartButton" onclick="goToPage('php/cart.php')">Cart</button>
+        </div>
+
 
 </body>
+
 </html>

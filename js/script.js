@@ -23,26 +23,20 @@ function decrementMoreThanFive(itemId) {
   }
 }
 
-// + button for items with quantity less than 5
 function incrementLessThanFive(itemId, qty) {
   var input = document.getElementById("qty" + itemId);
   var value = parseInt(input.value, 10);
 
   if (value + 1 <= qty) {
-    input.value = isNaN(value)
-      ? "1 (Only " + qty + " left)"
-      : value + 1 + " (Only " + qty + " left)";
+    input.value = value + 1;
   }
 }
 
-// - button for items with quantity less than 5
 function decrementLessThanFive(itemId, qty) {
   var input = document.getElementById("qty" + itemId);
   var value = parseInt(input.value, 10);
   if (value - 1 >= 0) {
-    input.value = isNaN(value)
-      ? "0 (Only " + qty + " left)"
-      : Math.max(0, value - 1) + " (Only " + qty + " left)";
+    input.value = value - 1;
   }
 }
 
@@ -221,3 +215,35 @@ document.addEventListener("DOMContentLoaded", function () {
 function clearLocalStorage() {
   localStorage.removeItem("visibleSections");
 }
+
+window.onload = function () {
+  // Define radios variable outside of the function to make it accessible globally
+  var radios = document.querySelectorAll(
+    'input[type="radio"][name="location"]'
+  );
+
+  // Function to update the selected state based on the radio button's checked state
+  function updateSelectedState() {
+    // Loop through each radio button
+    radios.forEach(function (radio) {
+      // If the radio is checked, add the 'selected' class to its parent label
+      if (radio.checked) {
+        radio.parentNode.classList.add("selected");
+      } else {
+        // Otherwise, remove the 'selected' class
+        radio.parentNode.classList.remove("selected");
+      }
+    });
+  }
+
+  // Call the function to update the selected state on page load
+  updateSelectedState();
+
+  // Add event listener for each radio button to update the selected state when changed
+  radios.forEach(function (radio) {
+    radio.addEventListener("change", function () {
+      // Update the selected state when a radio button is changed
+      updateSelectedState();
+    });
+  });
+};

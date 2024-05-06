@@ -174,11 +174,11 @@ html {
 }
 .customer-order-items {
   display: inline-block;
-  max-width: calc(100% - 60px); /* Adjust the width as needed */
-  word-wrap: break-word; /* Wrap long words */
+  max-width: calc(100% - 60px);
+  word-wrap: break-word;
 }
 .item {
-  white-space: nowrap; /* Prevent line breaks within the span */
+  white-space: nowrap;
 }
 
 /* X Button */
@@ -749,9 +749,364 @@ html {
 .expandedButtonItems {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  text-align: left; /* Align text to the left */
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+/* Customer Interface */
+#chooseNameTitle {
+  text-align: center;
+  margin: 0;
+  border-bottom: solid 1px black;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+#chooseNameInput {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0.75em;
+}
+#chooseNameInput input {
+  text-align: center;
+  width: 50%;
+  margin-bottom: 0.75em;
+}
+
+#chooseLocationTitle {
+  text-align: center;
+  margin: 0;
+  border-bottom: solid 1px black;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+#chooseNameLocationSubmitButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.15em;
+}
+
+.locationButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* Hide the default radio button */
+.locationButton input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Ensure the label takes up the full space of the button */
+.locationButton {
+  display: inline-block;
+  text-align: center;
+  width: 50%;
+  min-height: 2.5em;
+  font-size: 1.15em;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  outline: 0;
+  cursor: pointer;
+  background-color: white;
+  color: rgb(50, 49, 48);
+  font-weight: 400;
+  box-sizing: border-box;
+  border: 1px solid black;
+  line-height: 2.5em;
+  position: relative;
+}
+
+/* Style for when the button is hovered */
+.locationButton:hover {
+  background-color: rgb(218, 215, 213);
+  color: rgb(32, 31, 30);
+}
+
+/* Style for when the button is selected */
+.locationButton.selected {
+  background-color: #6cbbf3;
+  color: black;
+}
+
+#orderItemsTitle {
+  text-align: center;
+  margin: 0;
+  border-bottom: solid 1px black;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+.itemPriceQtyTitle_container {
+  display: flex;
+}
+.itemCustomerTitle {
+  margin-left: 3.2em;
+}
+.priceCustomerTitle {
+  margin-left: 3.4em;
+}
+.qtyCustomerTitle {
+  margin-left: 1.1em;
+}
+
+.itemPriceQtyContainer {
+  display: flex;
+  margin-top: 0.5em;
+}
+
+.itemDescription {
+  flex: 1;
+  margin-right: 10px;
+  min-width: 8em;
+}
+
+.itemPrice {
+  flex: 1;
+  margin-right: 20px;
+  max-width: 1.5em;
+}
+
+.number-input {
+  flex: 1;
+  margin-right: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.number-input input[type="number"] {
+  max-width: 2em;
+  margin: 0;
+  padding: 0;
+  height: 2.1em;
+  text-align: center;
+  line-height: 2em;
+  margin-right: 3px;
+}
+/* Hide the up and down arrows inside number input */
+.number-input input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.number-input input[type="number"]::-webkit-outer-spin-button,
+.number-input input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.itemPriceQtySubmit {
+  flex: 1;
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.itemDescription input {
+  width: 100%;
+  height: 1.587em;
+  font-size: 1em;
+}
+
+.itemPrice input {
+  width: 100%;
+  height: 1.587em;
+  font-size: 1em;
+}
+
+.itemPriceQtySubmit input[type="submit"] {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* itemPriceQtyContainer2 Starts here (The longer this goes on, the closer to project deadline, the worse the code gets, it might work but its not good, no no no, not good at all.)*/
+
+.itemPriceQtyContainer2 {
+  display: flex;
+  margin-bottom: 0.2em;
+}
+
+.itemDescription2 {
+  flex: 1;
+  margin-right: 10px;
+  min-width: 8em;
+}
+
+.itemPrice2 {
+  flex: 1;
+  margin-right: 20px;
+  max-width: 1.5em;
+}
+
+.number-input2 {
+  flex: 1;
+  margin-right: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.number-input2 input[type="number"] {
+  width: 2em; /* Set width explicitly */
+  margin: 0;
+  padding: 0;
+  height: 2.1em;
+  text-align: center;
+  line-height: 2em;
+  margin-right: 3px;
+}
+
+/* Hide the up and down arrows inside number input */
+.number-input2 input[type="number"]::-webkit-outer-spin-button,
+.number-input2 input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the spin button for Firefox */
+.number-input2 input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Hide the spin button for other browsers */
+.number-input2 input[type="number"] {
+  appearance: textfield;
+}
+
+.itemPriceQtySubmit2 {
+  flex: 1;
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.itemDescription2 input {
+  width: 100%;
+  height: 1.587em;
+  font-size: 1em;
+}
+
+.itemPrice2 input {
+  width: 100%;
+  height: 1.587em;
+  font-size: 1em;
+}
+
+.itemPriceQtySubmit2 input[type="submit"] {
+  margin-top: auto;
+  width: 100%;
+}
+
+#cartButton {
+  display: flex;
+  justify-content: center; /* Corrected property */
+  align-items: center;
+  margin-top: 2em;
+}
+.cartButton {
+  min-width: 6em; /* Corrected typo */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  text-align: center;
+  background-color: #6cbbf3;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  text-decoration: none;
+}
+
+.cartButton:hover {
+  background-color: #9dd3fa;
+  color: #000000;
+}
+
+.cartBackButton {
+  min-width: 2.5em;
+  max-height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  padding: 0.5em 0;
+  background-color: #e23939;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  outline: none;
+  text-decoration: none;
+}
+
+.cartBackButton:hover {
+  background-color: #fa7070;
+  color: #000000;
+}
+.customerOrderUpdateButton {
+  flex-grow: 1;
+  min-width: 4em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  text-align: center;
+  padding: 0.5em 0;
+  background-color: #6cbbf3;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  text-decoration: none;
+}
+.customerOrderUpdateButton:hover {
+  background-color: #9dd3fa;
+  color: #000000;
+}
+
+/* Cart Page*/
+#cartTitle_container {
+  display: flex;
+  width: 100%;
+  border-bottom: solid 1px black;
+}
+#cartBackButton {
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  margin-left: 0.75em;
+  margin-top: 0.25em;
+  margin-right: 3em;
+}
+#cartTitle {
+  font-size: 3em;
 }
 
 /* iPad iPadOS 14.7.1*/

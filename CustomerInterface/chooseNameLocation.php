@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/script.js"></script>
@@ -11,16 +12,18 @@
 </head>
 
 <body>
-<!--Form for entering name and selecting location-->
+    <!--Form for entering name and selecting location-->
     <form method="post" action="php/insertOrder.php">
-        <div id="chooseLocationTitle">
-            <p>Enter a name for the order</p>
+        <div id="chooseNameTitle">
+            Enter a name for the order
         </div>
 
-        <input type="text" name="cname">
+        <div id="chooseNameInput">
+            <input type="text" name="cname">
+        </div>
 
         <div id="chooseLocationTitle">
-            <p>Choose Location</p>
+            Choose Location
         </div>
 
         <!--go to file for generating location buttons-->
@@ -28,10 +31,13 @@
         include_once "php/location.php";
         ?>
 
-        <br><br>
+
         <!--submit information and go to next page-->
-        <input type="submit" class="ButtonClassBlue2" value="Next">
-        
+        <div id="chooseNameLocationSubmitButton">
+            <input type="submit" class="UpdateButton" value="Next">
+        </div>
+
     </form>
 </body>
+
 </html>

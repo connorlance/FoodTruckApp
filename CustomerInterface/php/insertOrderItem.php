@@ -17,7 +17,7 @@ $result = $conn->query($query);
 //subtract qty of order_item from item table
 $query = "SELECT qty FROM item WHERE iid='$iid'";
 $result = $conn->query($query);
-if($result) {
+if ($result) {
     $row = $result->fetch_assoc();
     $currentQty = $row['qty'];
     $newQty = $currentQty - $qty;
@@ -35,4 +35,7 @@ if ($result) {
 } else {
     echo "Error: " . $conn->error;
 }
-?>
+
+echo '<div id="submitOrderButton">';
+echo '<button class="cartButton" onclick="goToPage(\'php/cart.php\')">Cart</button>';
+echo '</div>';

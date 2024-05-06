@@ -40,15 +40,18 @@ $query = "INSERT into orders (cname, lid, status) values('$cname', '$lid', '$sta
 $result = $conn->query($query);
 
 //query order table for oid
-$query = "SELECT oid from orders WHERE cname='$cname' AND lid='$lid' AND status='pending'";
-$result = $conn->query($query);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-      $_SESSION['oid'] = $row['oid'];  
+if ($result) {
+    // Retrieve the oid after insertion
+    $oid_query = "SELECT oid FROM orders WHERE cname='$cname' AND lid='$lid' AND status='$status'";
+    $oid_result = $conn->query($oid_query);
+    if ($oid_result && $oid_result->num_rows > 0) {
+        $oid_row = $oid_result->fetch_assoc();
+        $_SESSION['oid'] = $oid_row['oid']; // Set the oid session variable
+    } else {
+        echo "Failed to retrieve oid";
     }
 }
 
 
 //send to next file
 header("Location: ../chooseOrderItems.php");
-?>
