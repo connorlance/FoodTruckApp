@@ -9,7 +9,7 @@ This is a term final project I completed for a college class where I had to crea
 * Inventory page allows for insert/update/delete items, and insert/update/delete locations.
 * Inventory page allows for updating item stock. When items are created, deleted, out of stock, or stock updated, the inventory page and customer order page changes to reflect the current items in the database.
 Seller Interface Demo
-![Seller Interface Demo](Demo/SellerInteface.gif)
+![Seller Interface Demo](Demo/SellerInterface.gif)
 Customer Interface Demo
 ![Customer Interface Demo](Demo/CustomerInterface.gif)
 
