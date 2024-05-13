@@ -43,7 +43,6 @@
             <button class="cartButton" onclick="goToPage('php/cart.php')">Cart</button>
         </div>
 
-
 </body>
 
 </html>

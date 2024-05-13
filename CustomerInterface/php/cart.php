@@ -18,9 +18,6 @@ echo "<div id='cartBackButton'> <button class='cartBackButton' onclick='goToPage
 echo "<div id='cartTitle'>Cart</div>";
 echo "</div>";
 
-
-
-
 // Echo header row for item details
 echo '<div style="text-align: center; font-size: 1.5em; border-bottom: 1px solid black;">Item | Qty | Cost</div>';
 
@@ -60,7 +57,7 @@ if ($result->num_rows > 0) {
     $query = "UPDATE orders SET totalCost='$totalCost' WHERE oid='$oid'";
     $result = $conn->query($query);
 } else {
-    // Handle case where no order items found
+    echo "0 results";
 }
 
 echo '<div id="cartButton">';

@@ -68,8 +68,6 @@ if ($result->num_rows > 0) {
     $query = "UPDATE orders SET totalCost='$totalCost' WHERE oid='$oid'";
     $result = $conn->query($query);
 } else {
-    // Handle case where no order items found
 }
 
-// Close the body tag
 echo '</body>';

@@ -52,6 +52,5 @@ if ($result) {
     }
 }
 
-
 //send to next file
 header("Location: ../chooseOrderItems.php");

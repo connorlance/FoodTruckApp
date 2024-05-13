@@ -25,16 +25,13 @@
 
         <div id="contentBelowNav">
 
-
             <?php
             session_start();
             $_SESSION['orderType'] = 'null';
             $_SESSION['page'] = 'daySales';
 
-
             //Generate ready and completed orders
             include_once "php/selectOrders.php";
-
 
             ?>
             <footer>

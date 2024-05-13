@@ -31,7 +31,6 @@
         include_once "php/location.php";
         ?>
 
-
         <!--submit information and go to next page-->
         <div id="chooseNameLocationSubmitButton">
             <input type="submit" class="UpdateButton" value="Next">

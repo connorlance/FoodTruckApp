@@ -3,8 +3,6 @@ ob_start();
 //connect to database
 require_once 'C:\wamp64\www\FoodTruckApp/db_connection.php';
 
-
-
 // Check if the form is submitted for updating inventory
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_forms'])) {
 
@@ -27,7 +25,6 @@ $result = $conn->query($select);
 
 //create boolean variable
 $ItemQtyTitle = false;
-
 
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {

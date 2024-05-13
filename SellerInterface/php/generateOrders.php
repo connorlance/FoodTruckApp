@@ -162,13 +162,7 @@ if ($result->num_rows > 0) {
             echo "0 results";
         }
         echo "</div>";
-
-
-
-
-
         echo "</div>";
-
 
         // Close the button
         echo "</button>";

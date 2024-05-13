@@ -25,7 +25,7 @@ if (isset($_POST['insert_location_value_submitted'])) {
         $lastInsertedID = $stmt->insert_id;
 
         // Redirect to inventory page
-        ob_end_clean(); // Clean (erase) the output buffer
+        ob_end_clean();
         header("Location: http://localhost/FoodTruckApp/SellerInterface/inventory.php");
         exit;
     } else {

@@ -804,7 +804,6 @@ html {
   height: 0;
 }
 
-/* Ensure the label takes up the full space of the button */
 .locationButton {
   display: inline-block;
   text-align: center;
@@ -824,13 +823,11 @@ html {
   position: relative;
 }
 
-/* Style for when the button is hovered */
 .locationButton:hover {
   background-color: rgb(218, 215, 213);
   color: rgb(32, 31, 30);
 }
 
-/* Style for when the button is selected */
 .locationButton.selected {
   background-color: #6cbbf3;
   color: black;
@@ -890,7 +887,7 @@ html {
   line-height: 2em;
   margin-right: 3px;
 }
-/* Hide the up and down arrows inside number input */
+
 .number-input input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -952,7 +949,7 @@ html {
 }
 
 .number-input2 input[type="number"] {
-  width: 2em; /* Set width explicitly */
+  width: 2em;
   margin: 0;
   padding: 0;
   height: 2.1em;
@@ -961,7 +958,6 @@ html {
   margin-right: 3px;
 }
 
-/* Hide the up and down arrows inside number input */
 .number-input2 input[type="number"]::-webkit-outer-spin-button,
 .number-input2 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -1003,12 +999,12 @@ html {
 
 #cartButton {
   display: flex;
-  justify-content: center; /* Corrected property */
+  justify-content: center;
   align-items: center;
   margin-top: 2em;
 }
 .cartButton {
-  min-width: 6em; /* Corrected typo */
+  min-width: 6em;
 
   display: flex;
   justify-content: center;
