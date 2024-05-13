@@ -8,6 +8,12 @@ This is a term final project I completed for a college class where I had to crea
 * DaySales page shows ready and completed orders along with total orders and total sales for ready and completed orders.
 * Inventory page allows for insert/update/delete items, and insert/update/delete locations.
 * Inventory page allows for updating item stock. When items are created, deleted, out of stock, or stock updated, the inventory page and customer order page changes to reflect the current items in the database.
+
+Customer Interface Demo             |  Seller Interface Demo
+:-------------------------:|:-------------------------:
+![Customer Interface Demo](Demo/CustomerInterface.gif)  | ![Seller Interface Demo](Demo/SellerInterface.gif)
+
+
   
 # Seller Interface Demo
 ![Seller Interface Demo](Demo/SellerInterface.gif)
