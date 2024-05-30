@@ -1,10 +1,11 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$dbname = "FoodTruckApp";
+$username = "hci";
+$password = "hci";
+$dbname = "hci";
 
 // Create connection
-$conn = new mysqli($servername, $username, '', $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
